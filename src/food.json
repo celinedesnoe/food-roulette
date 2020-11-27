@@ -1,0 +1,13 @@
+{
+  "food" : [
+    {
+      "name": "raclette"
+    },
+    {
+      "name": "poulet rôti"
+    },
+    {
+      "name": "rougail"
+    }
+  ]
+}
