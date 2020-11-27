@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { food } from "../food.json";
 
-export const FoodFinder = () => {
-  const [foodIdea, setFoodIdea] = useState("");
+interface FoodIdea {
+  name: string;
+}
+
+const FoodFinder = () => {
+  const [foodIdea, setFoodIdea] = useState<FoodIdea | undefined>(undefined);
 
   const getFood = () => {
-    const randomIndex = Math.floor(Math.random() * food.length);
+    const randomIndex: number = Math.floor(Math.random() * food.length);
     setFoodIdea(food[randomIndex]);
   };
 
@@ -17,3 +21,5 @@ export const FoodFinder = () => {
     </div>
   );
 };
+
+export default FoodFinder;
