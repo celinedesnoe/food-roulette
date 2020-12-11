@@ -1,13 +1,13 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { connectRouter } from "connected-react-router";
-import { createBrowserHistory } from "history";
+// import { connectRouter } from "connected-react-router";
+// import { createBrowserHistory } from "history";
 
 import foodListReducer from "./foodList";
 
-export const history = createBrowserHistory();
+// export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-  router: connectRouter(history),
+  //   router: connectRouter(history),
   foodList: foodListReducer,
 });
 
