@@ -3,11 +3,12 @@ import { Formik, Form, Field } from "formik";
 
 interface NewFoodValues {
   name: string;
+  isVegetarian: boolean;
 }
 
 const FoodForm = () => {
-  const [newFoodIdea, setNewFoodIdea] = useState("");
-  const initialValues: NewFoodValues = { name: "" };
+  const initialValues: NewFoodValues = { name: "", isVegetarian: false };
+  const [newFoodIdea, setNewFoodIdea] = useState(initialValues);
 
   return (
     <div>
@@ -15,18 +16,26 @@ const FoodForm = () => {
         initialValues={initialValues}
         onSubmit={(values, actions) => {
           console.log({ values, actions });
-          setNewFoodIdea(values.name);
+          setNewFoodIdea(values);
           actions.setSubmitting(false);
         }}
       >
-        <Form>
+        <Form className="">
           <label htmlFor="name">Name of the meal</label>
           <Field id="name" name="name" placeholder="Rougail" />
+          <label>
+            <Field type="checkbox" name="isVegetarian" />
+            {"Végétarien"}
+          </label>
           <button type="submit">Submit</button>
         </Form>
       </Formik>
-      {newFoodIdea && (
-        <div>You have added this delicious meal: {newFoodIdea}</div>
+      {newFoodIdea.name && (
+        <div
+          style={{ backgroundColor: newFoodIdea.isVegetarian ? "green" : null }}
+        >
+          You have added this delicious meal: {newFoodIdea.name}
+        </div>
       )}
     </div>
   );
