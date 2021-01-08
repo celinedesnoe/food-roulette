@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+
 import { RootState } from "../reducers/rootReducer";
 
 interface FoodIdea {
@@ -8,8 +9,6 @@ interface FoodIdea {
 
 const FoodFinder = () => {
   const { foodItems } = useSelector((state: RootState) => state.foodList);
-
-  console.log("foodItems", foodItems);
 
   const [foodIdea, setFoodIdea] = useState<FoodIdea | undefined>(undefined);
 

@@ -14,4 +14,10 @@ export function fetchFoodList() {
   };
 }
 
+export function addFoodItem(values) {
+  return (dispatch) => {
+    dispatch(actions.addNewFoodItem(values));
+  };
+}
+
 export default actions;
