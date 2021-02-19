@@ -42,17 +42,8 @@ const FoodForm = () => {
           <TextInput
             id="name"
             name="name"
-<<<<<<< HEAD
-            placeholder="Burger"
-<<<<<<< HEAD
-            label="Name of the meal"
-=======
             placeholder="Noodles"
             label="Meal"
->>>>>>> 7384f90... fixup! change placeholder
-=======
-            label="Meal"
->>>>>>> 82d674a... change label
             hasError={hasError}
           />
           {/* <label>
