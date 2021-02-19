@@ -5,12 +5,19 @@ export const initialState = {
   foodItems: [
     {
       name: "raclette",
+      tag: "réconfortant",
     },
     {
       name: "poulet rôti",
+      tag: "classique",
     },
     {
       name: "rougail",
+      tag: "épicé",
+    },
+    {
+      name: "gratin de courgette",
+      tag: "végétarien",
     },
   ],
 };
@@ -26,6 +33,10 @@ const { actions, reducer } = createSlice({
     receiveFoodList(state, action) {
       state.isFetching = false;
       state.foodItems = action.payload.foodItems;
+    },
+    addNewFoodItem(state, action) {
+      state.isFetching = false;
+      state.foodItems = [...state.foodItems, action.payload];
     },
   },
 });

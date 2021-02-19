@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
+import { useDispatch } from "react-redux";
+import { addFoodItem } from "../actions/foodList";
+import * as Yup from "yup";
+
+import TextInput from "../component/TextInput/TextInput";
 
 interface NewFoodValues {
   name: string;
@@ -9,24 +14,51 @@ interface NewFoodValues {
 const FoodForm = () => {
   const initialValues: NewFoodValues = { name: "", isVegetarian: false };
   const [newFoodIdea, setNewFoodIdea] = useState(initialValues);
+  const [hasError, setHasError] = useState("");
+
+  const dispatch = useDispatch();
+
+  const addFood = (values: NewFoodValues) => {
+    dispatch(addFoodItem(values));
+  };
 
   return (
     <div>
       <Formik
         initialValues={initialValues}
+        validationSchema={Yup.object({
+          name: Yup.string().max(4, "Seulement 4 lettres"),
+        })}
         onSubmit={(values, actions) => {
-          console.log({ values, actions });
           setNewFoodIdea(values);
           actions.setSubmitting(false);
+          // if (values.name !== "aaaa") {
+          //   setHasError("NO GOOOOO");
+          // }
+          addFood(values);
         }}
       >
         <Form className="">
-          <label htmlFor="name">Name of the meal</label>
-          <Field id="name" name="name" placeholder="Rougail" />
-          <label>
+          <TextInput
+            id="name"
+            name="name"
+<<<<<<< HEAD
+            placeholder="Burger"
+<<<<<<< HEAD
+            label="Name of the meal"
+=======
+            placeholder="Noodles"
+            label="Meal"
+>>>>>>> 7384f90... fixup! change placeholder
+=======
+            label="Meal"
+>>>>>>> 82d674a... change label
+            hasError={hasError}
+          />
+          {/* <label>
             <Field type="checkbox" name="isVegetarian" />
             {"Végétarien"}
-          </label>
+          </label> */}
           <button type="submit">Submit</button>
         </Form>
       </Formik>
